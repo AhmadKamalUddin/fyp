@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/main.css" />
+  </head>
+  <body>
+    <section class="background">
+    <ul class="nav-list">
+      <li class="dropdown">
+        <a href="#">|||||</a>
+        <ul class="dropdown-content">
+          <li><a href="/">Home</a></li>
+          <li><a href="about">About <%=webApp%></a></li>
+        </ul>
+      </li>
+      <div class="label-container">
+        <h2 class="label">Welcome to <%=webApp%></h2>
+      </div>
+      <form action="/search-result" method="GET">
+        <input id="search-box" type="text" name="keyword" value="">
+        <input type="submit" value="Search">
+      </form>
+    </ul>
+    <h1 class="resultHeader">Search Results for Fifa Ratings Forum</h1>
+    <p class="resultP">You searched for: <%=searchKeyword%></p>
+    <% if (results.length > 0) { %>
+      <ul>
+        <% results.forEach(result => { %>
+          <li><%= result.name %> - Rating: <%= result.rating %></li>
+        <% }); %>
+      </ul>
+    <% } else { %>
+      <p>No results found.</p>
+    <% } %>
+  </section>
+  </body>
+</html>

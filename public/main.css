@@ -1,0 +1,325 @@
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0; /* Removes default margin */
+  font-size: 16px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.background {
+  min-height: 100vh;
+  width: 100%;
+  /* https://www.vg247.com/ea-considering-renaming-fifa-series-and-football-games  for the image below*/
+  background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(images/homepage.jpg); 
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  overflow: hidden;
+}
+
+/* For tablets */
+@media (min-width: 768px) and (max-width: 1024px) {
+  /* Your CSS for tablet view */
+}
+
+/* For mobile phones */
+@media (max-width: 767px) {
+  /* Your CSS for mobile view */
+}
+
+.dropbar {
+  color: rgb(0, 255, 255);
+}
+
+.nav-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap; /* Prevent wrapping */
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  list-style-type: none;
+  padding: 10px;
+  left: 0; /* Align the left edge of the dropdown with the left edge of the dropdown button */
+  right: auto; /* Reset any previous right value */
+  min-width: 160px; /* Set a min-width for the dropdown content */
+}
+
+.dropdown:hover .dropdown-content {
+  display: block; /* This shows the content on hover */
+}
+
+.label-container {
+  flex-grow: 1; /* Allow the welcome message to grow and fill the space */
+  text-align: center; /* Center the text inside this container */
+}
+
+.label {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  color: rgb(0, 255, 255);
+  text-align: center;
+}
+
+form {
+  order: 3; /* Flexbox order */
+  padding: 10px;
+  background: transparent; /* Make form background transparent */
+  padding-right: 15px;
+}
+
+/* Make the input field transparent */
+form input[type="text"] {
+  background: transparent;
+  border: 1px solid #ccc; /* You may want to style the border to make the input visible */
+  color: #ffffff; 
+}
+
+
+a:link, a:visited, a:active {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  padding: 5px;
+}
+
+a:hover {
+  color: white;
+  text-decoration: none;
+  background-color: orangered;
+  padding: 5px;
+}
+
+h1 {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 20px;
+  color: rgb(255, 255, 255);
+}
+
+h2 {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color: rgb(255, 255, 255);
+}
+
+Li {
+  color: white;
+}
+
+a,li {
+  padding: 10px;
+}
+
+p,li {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+a:link {
+    color: rgb(255, 255, 255);
+    text-decoration: none;
+    padding:5px;
+  }
+  
+  /* visited link */
+  a:visited {
+    color: rgb(0, 0, 0);
+    text-decoration: none;
+    padding:5px;
+  }
+  
+  /* mouse over link */
+  a:hover {
+    color: white;
+    text-decoration: none;
+    background-color: rgb(83, 62, 202);
+    padding:5px;
+  }
+  
+  /* selected link */
+  a:active {
+    color: blue;
+    text-decoration: none;
+    padding:5px;
+  }
+
+  .container {
+    width: 80%;
+    margin: auto; /* center the container */
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap; /* Allows items to wrap onto the next line */
+  }
+  
+  .item {
+    flex: 1 1 200px; /* Items will grow and shrink but won't be smaller than 200px */
+  }
+
+  .image-container {
+    position: relative;
+    width: 100%; 
+    height: auto; 
+  }
+  
+  .image-container img {
+    width: 100%;
+    height: auto;
+    display: block; /* Remove any space below the image */
+  }
+  
+  .image-container::before {
+    content: '';
+    position: absolute;
+    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(248, 244, 244, 0) 100%);
+  }
+
+  .aboutHeader {
+    padding: 20px;
+    padding-bottom: 0;
+  }
+  .aboutP {
+    padding-left: 20px;
+    padding-right: 20px;
+    color: white;
+  }
+
+  .registerHeader {
+    padding-left: 17px;
+  }
+  .formRegister {
+    padding-left: 17px;
+    color: white;
+  }
+
+  .addratingHeader {
+    padding-left: 16px;
+  }
+  .addratingForm {
+    padding-left: 16px;
+  }
+
+  .listHeader1 {
+    padding-left: 16px;
+  }
+  .listHeader2 {
+    padding-left: 16px;
+  }
+
+  .highHeader1 {
+    padding-left: 16px;
+  }
+  .highHeader2 {
+    padding-left: 16px;
+  }
+
+  .weatherHeader1 {
+    padding-left: 16px;
+  }
+  .weatherHeader2 {
+    padding-left: 16px;
+    font-size: 17px;
+  }
+  .weatherForm {
+    padding-left: 16px;
+    color: white;
+  }
+
+  .usersHeader {
+    padding-left: 16px;
+  }
+
+  .deleteHeader {
+    padding-left: 16px;
+  }
+  .deleteForm {
+    padding-left: 16px;
+    color: white;
+  }
+
+  table {
+    padding-left: 6px;
+    color: white;
+  }
+
+  .loginHeader {
+    padding-left: 16px;
+  }
+  .loginForm {
+    padding-left: 16px;
+  }
+
+  .resultHeader {
+    padding-left: 16px;
+  }
+  .resultP {
+    padding-left: 16px;
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
