@@ -68,7 +68,7 @@ module.exports = function (app, webData) {
         });
 
         //API Link below
-        https://rapidapi.com/nextbaseapp/api/chatgpt-gpt4-ai-chatbot
+        //https://rapidapi.com/nextbaseapp/api/chatgpt-gpt4-ai-chatbot
     });
 
     app.post('/sendQuery', function (req, res) {
