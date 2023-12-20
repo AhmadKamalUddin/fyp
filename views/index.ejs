@@ -16,10 +16,14 @@
       <div class="label-container">
         <h2 class="label">Welcome to <%=webApp%></h2>
       </div>
-      <!-- <form action="/search-result" method="GET">
-        <input id="search-box" type="text" name="keyword" value="">
-        <input type="submit" value="Search">
-      </form> -->
+      <form action="/sendQuery" method="POST">
+        <input type="text" name="userQuery" placeholder="Ask me anything...">
+        <input type="hidden" name="conversationId" value="<%= conversationId %>">
+        <button type="submit">Ask</button>
+      </form>
+      <% if (typeof response !== 'undefined') { %>
+        <p>Chatbot says: <%= response %></p>
+      <% } %>
     </ul>
   </section>
   </body>

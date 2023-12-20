@@ -1,4 +1,5 @@
 module.exports = function (app, webData) {
+    const webApp = "vitaAI";
 
     // Middleware to redirect to login if user is not logged in
     const redirectLogin = (req, res, next) => {
@@ -15,6 +16,8 @@ module.exports = function (app, webData) {
     const cors = require('cors');
     const express = require('express');
     const request = require('request');
+    const bodyParser = require('body-parser');
+    app.use(bodyParser.urlencoded({ extended: true }));
 
     // Setting up rate limiter to prevent abuse
     const limiter = rateLimit({
@@ -26,9 +29,8 @@ module.exports = function (app, webData) {
     // Enabling Cross-Origin Resource Sharing
     app.use(cors());
 
-    // Route for home page
-    app.get('/', function (req, res){
-        res.render('index.ejs', webData);
+    app.get('/', function (req, res) {
+        res.render('index', { webApp: webApp, conversationId: '' });
     });
 
     // Route for about page
@@ -41,28 +43,64 @@ module.exports = function (app, webData) {
         res.render("search.ejs", webData);
     });
 
-    // Route for handling search results with validation checks
-    app.get('/search-result', [
-        check('keyword').isLength({ min: 1 }).withMessage('Keyword cannot be empty'),
-    ], function (req, res) {
-        const errors = validationResult(req);
-      
-        if (!errors.isEmpty()) {
-            res.render('index.ejs', { webApp: 'vitAI', error: 'Keyword cannot be empty' });
-        } else {
-            const searchKeyword = req.query.keyword;
-      
-            // Database search query
-            let query = 'SELECT * FROM ratings WHERE name LIKE ?';
-            const searchTerm = `%${searchKeyword}%`;
-            db.query(query, [searchTerm], (err, results) => {
-                if (err) {
-                    res.status(500).send('Internal Server Error');
-                } else {
-                    // Displaying search results
-                    res.render('search-result.ejs', { webApp: 'vitAI', searchKeyword, results });
-                }
-            }); 
-        }
+    app.get('/chatBot', function (req, res) {
+        const options = {
+            method: 'POST',
+            url: 'https://chatgpt-gpt4-ai-chatbot.p.rapidapi.com/ask',
+            headers: {
+              'content-type': 'application/json',
+              'X-RapidAPI-Key': 'f4b5e795e9msha6da9abb3a10e70p105f08jsnb021b319baea',
+              'X-RapidAPI-Host': 'chatgpt-gpt4-ai-chatbot.p.rapidapi.com'
+            },
+            body: {
+              query: 'How to become rich?'
+            },
+            json: true
+        };
+        
+        request(options, function (error, response, body) {
+            if (error) {
+                console.error('Error:', error);
+                return res.status(500).send('Error occurred');
+            }
+            console.log(body);
+            res.send(body); // Sends a response back to the client
+        });
+
+        //API Link below
+        https://rapidapi.com/nextbaseapp/api/chatgpt-gpt4-ai-chatbot
+    });
+
+    app.post('/sendQuery', function (req, res) {
+        const userQuery = req.body.userQuery;
+        let conversationId = req.body.conversationId; // Retrieves the conversationId if it exists
+    
+        const options = {
+            method: 'POST',
+            url: 'https://chatgpt-gpt4-ai-chatbot.p.rapidapi.com/ask',
+            headers: {
+              'content-type': 'application/json',
+              'X-RapidAPI-Key': 'f4b5e795e9msha6da9abb3a10e70p105f08jsnb021b319baea',
+              'X-RapidAPI-Host': 'chatgpt-gpt4-ai-chatbot.p.rapidapi.com'
+            },
+            body: {
+              query: userQuery,
+              ...(conversationId && { conversationId })
+            },
+            json: true
+        };
+    
+    
+        request(options, function (error, response, body) {
+            if (error) {
+                console.error('Error:', error);
+                return res.status(500).send('Error occurred');
+            }
+            res.render('index', { 
+                webApp: webApp, 
+                response: body.response, 
+                conversationId: body.conversationId || req.body.conversationId
+            });
+        });
     });
 }

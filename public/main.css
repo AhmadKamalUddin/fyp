@@ -4,14 +4,14 @@ body {
   align-items: center;
   margin: 0; /* Removes default margin */
   font-size: 16px;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
 .background {
   min-height: 100vh;
   width: 100%;
   /* https://www.vg247.com/ea-considering-renaming-fifa-series-and-football-games  for the image below*/
-  background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(images/homepage.jpg); 
+  background-image: linear-gradient(rgba(4, 9, 30, 0.7), rgba(4, 9, 30, 0.7)), url(images/background.png); 
   background-position: center;
   background-size: cover;
   position: relative;
@@ -29,7 +29,7 @@ body {
 }
 
 .dropbar {
-  color: rgb(0, 255, 255);
+  color: rgb(255, 255, 255);
 }
 
 .nav-list {
@@ -50,8 +50,8 @@ body {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #f9f9f9;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  background-color: rgb(24, 24, 59);
+  box-shadow: 0px 8px 16px 0px rgb(93, 76, 124);
   z-index: 1;
   list-style-type: none;
   padding: 10px;
@@ -70,8 +70,8 @@ body {
 }
 
 .label {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 20px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  font-size: 30px;
   color: rgb(0, 255, 255);
   text-align: center;
 }
@@ -92,7 +92,7 @@ form input[type="text"] {
 
 
 a:link, a:visited, a:active {
-  color: rgb(255, 255, 255);
+  color: rgb(0, 0, 0);
   text-decoration: none;
   padding: 5px;
 }
@@ -100,24 +100,25 @@ a:link, a:visited, a:active {
 a:hover {
   color: white;
   text-decoration: none;
-  background-color: orangered;
+  background-color: rgb(114, 99, 143);
   padding: 5px;
 }
 
 h1 {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   font-size: 20px;
   color: rgb(255, 255, 255);
 }
 
 h2 {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     font-size: 20px;
+    font-style: bold;
     color: rgb(255, 255, 255);
 }
 
 Li {
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 a,li {
@@ -125,157 +126,73 @@ a,li {
 }
 
 p,li {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-a:link {
-    color: rgb(255, 255, 255);
-    text-decoration: none;
-    padding:5px;
-  }
+.dropbar,li {
+  color: rgb(0, 0, 0);
+}
   
-  /* visited link */
-  a:visited {
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-    padding:5px;
-  }
-  
-  /* mouse over link */
-  a:hover {
-    color: white;
-    text-decoration: none;
-    background-color: rgb(83, 62, 202);
-    padding:5px;
-  }
-  
-  /* selected link */
-  a:active {
-    color: blue;
-    text-decoration: none;
-    padding:5px;
-  }
+/* visited link */
+a:visited {
+  color: rgb(255, 255, 255);
+  text-decoration: none;
+  padding:5px;
+}
 
-  .container {
-    width: 80%;
-    margin: auto; /* center the container */
-  }
+/* selected link */
+a:active {
+  color: rgb(24, 24, 59);
+  text-decoration: none;
+  padding:5px;
+}
 
-  img {
-    max-width: 100%;
-    height: auto;
-  }
+.container {
+  width: 80%;
+  margin: auto; /* center the container */
+}
 
-  .container {
-    display: flex;
-    flex-wrap: wrap; /* Allows items to wrap onto the next line */
-  }
-  
-  .item {
-    flex: 1 1 200px; /* Items will grow and shrink but won't be smaller than 200px */
-  }
+img {
+  max-width: 100%;
+  height: auto;
+}
 
-  .image-container {
-    position: relative;
-    width: 100%; 
-    height: auto; 
-  }
-  
-  .image-container img {
-    width: 100%;
-    height: auto;
-    display: block; /* Remove any space below the image */
-  }
-  
-  .image-container::before {
-    content: '';
-    position: absolute;
-    background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(248, 244, 244, 0) 100%);
-  }
+.container {
+  display: flex;
+  flex-wrap: wrap; /* Allows items to wrap onto the next line */
+}
 
-  .aboutHeader {
-    padding: 20px;
-    padding-bottom: 0;
-  }
-  .aboutP {
-    padding-left: 20px;
-    padding-right: 20px;
-    color: white;
-  }
+.item {
+  flex: 1 1 200px; /* Items will grow and shrink but won't be smaller than 200px */
+}
 
-  .registerHeader {
-    padding-left: 17px;
-  }
-  .formRegister {
-    padding-left: 17px;
-    color: white;
-  }
+.image-container {
+  position: relative;
+  width: 100%; 
+  height: auto; 
+}
 
-  .addratingHeader {
-    padding-left: 16px;
-  }
-  .addratingForm {
-    padding-left: 16px;
-  }
+.image-container img {
+  width: 100%;
+  height: auto;
+  display: block; /* Remove any space below the image */
+}
 
-  .listHeader1 {
-    padding-left: 16px;
-  }
-  .listHeader2 {
-    padding-left: 16px;
-  }
+.image-container::before {
+  content: '';
+  position: absolute;
+  background: linear-gradient(to bottom, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%);
+}
 
-  .highHeader1 {
-    padding-left: 16px;
-  }
-  .highHeader2 {
-    padding-left: 16px;
-  }
-
-  .weatherHeader1 {
-    padding-left: 16px;
-  }
-  .weatherHeader2 {
-    padding-left: 16px;
-    font-size: 17px;
-  }
-  .weatherForm {
-    padding-left: 16px;
-    color: white;
-  }
-
-  .usersHeader {
-    padding-left: 16px;
-  }
-
-  .deleteHeader {
-    padding-left: 16px;
-  }
-  .deleteForm {
-    padding-left: 16px;
-    color: white;
-  }
-
-  table {
-    padding-left: 6px;
-    color: white;
-  }
-
-  .loginHeader {
-    padding-left: 16px;
-  }
-  .loginForm {
-    padding-left: 16px;
-  }
-
-  .resultHeader {
-    padding-left: 16px;
-  }
-  .resultP {
-    padding-left: 16px;
-  }
-
-
+.aboutHeader {
+  padding: 20px;
+  padding-bottom: 0;
+}
+.aboutP {
+  padding-left: 20px;
+  padding-right: 20px;
+  color: white;
+}
 
 
 
