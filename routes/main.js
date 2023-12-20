@@ -1,5 +1,5 @@
 module.exports = function (app, webData) {
-    const webApp = "vitaAI";
+    const webApp = "vitAI";
 
     // Middleware to redirect to login if user is not logged in
     const redirectLogin = (req, res, next) => {
@@ -96,9 +96,11 @@ module.exports = function (app, webData) {
                 console.error('Error:', error);
                 return res.status(500).send('Error occurred');
             }
+            // Renders the template with the response, userQuery, and conversationId
             res.render('index', { 
-                webApp: webApp, 
+                webApp: webApp, // or just the webApp
                 response: body.response, 
+                userQuery: userQuery, 
                 conversationId: body.conversationId || req.body.conversationId
             });
         });

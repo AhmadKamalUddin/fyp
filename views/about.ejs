@@ -6,27 +6,20 @@
   </head>
   <body>
     <section class="background">
-    <ul class="nav-list">
-      <li class="dropdown">
-        <a href="#">|||||</a>
-        <ul class="dropdown-content">
-          <li><a href="/">Home</a></li>
-          <li><a href="about">About <%=webApp%></a></li>
-          <li><a href="chatBot">ChatBot<%=webApp%></a></li>
+      <div class="nav-container">
+        <ul class="nav-list">
+          <li class="dropdown">
+            <a class="dropbar" href="#">|||||</a>
+            <ul class="dropdown-content">
+              <li><a href="/">Home</a></li>
+              <li><a href="about">About <%=webApp%></a></li>
+            </ul>
+          </li>
         </ul>
-      </li>
+      </div>
       <div class="label-container">
         <h2 class="label">Welcome to <%=webApp%></h2>
       </div>
-      <form action="/sendQuery" method="POST">
-        <input type="text" name="userQuery" placeholder="Ask me anything...">
-        <input type="hidden" name="conversationId" value="<%= conversationId %>">
-        <button type="submit">Ask</button>
-      </form>
-      <% if (typeof response !== 'undefined') { %>
-        <p>Chatbot says: <%= response %></p>
-      <% } %>
-    </ul>
     <h1 class="aboutHeader">About <%=webApp%></h1>
     <p class="aboutP">VitAI derives from vitae which is a latin word meaning course of life. VitAI is here to help with any curriculum to make you stand out.</p>
   </body>

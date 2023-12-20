@@ -1,8 +1,9 @@
-body {
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin: 0; /* Removes default margin */
   font-size: 16px;
   font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
@@ -20,27 +21,33 @@ body {
 
 /* For tablets */
 @media (min-width: 768px) and (max-width: 1024px) {
-  /* Your CSS for tablet view */
+  /* CSS for tablet view */
 }
 
 /* For mobile phones */
 @media (max-width: 767px) {
-  /* Your CSS for mobile view */
+  .content-container {
+      margin-top: 20px; /* Less space on smaller screens */
+  }
 }
 
 .dropbar {
   color: rgb(255, 255, 255);
 }
 
+.nav-container {
+  position: relative;
+  padding: 10px 20px;
+}
+
+
 .nav-list {
   list-style-type: none;
   margin: 0;
   padding: 0;
   display: flex;
-  width: 100%;
   align-items: center;
-  justify-content: space-between;
-  flex-wrap: nowrap; /* Prevent wrapping */
+  justify-content: flex-start; /* Aligns the items to the start from the left */
 }
 
 .dropdown {
@@ -55,18 +62,18 @@ body {
   z-index: 1;
   list-style-type: none;
   padding: 10px;
-  left: 0; /* Align the left edge of the dropdown with the left edge of the dropdown button */
-  right: auto; /* Reset any previous right value */
-  min-width: 160px; /* Set a min-width for the dropdown content */
+  left: 0; /* Aligns the left edge of the dropdown with the left edge of the dropdown button */
+  right: auto; /* Resets any previous right value */
+  min-width: 160px; /* Sets a min-width for the dropdown content */
 }
 
 .dropdown:hover .dropdown-content {
-  display: block; /* This shows the content on hover */
+  display: block; /* This shows the content on hovering */
 }
 
 .label-container {
-  flex-grow: 1; /* Allow the welcome message to grow and fill the space */
-  text-align: center; /* Center the text inside this container */
+  flex-grow: 1;
+  text-align: left; /* Aligns text to the left */
 }
 
 .label {
@@ -75,21 +82,6 @@ body {
   color: rgb(0, 255, 255);
   text-align: center;
 }
-
-form {
-  order: 3; /* Flexbox order */
-  padding: 10px;
-  background: transparent; /* Make form background transparent */
-  padding-right: 15px;
-}
-
-/* Make the input field transparent */
-form input[type="text"] {
-  background: transparent;
-  border: 1px solid #ccc; /* You may want to style the border to make the input visible */
-  color: #ffffff; 
-}
-
 
 a:link, a:visited, a:active {
   color: rgb(0, 0, 0);
@@ -149,7 +141,9 @@ a:active {
 
 .container {
   width: 80%;
-  margin: auto; /* center the container */
+  margin: auto; /* centers the container */
+  display: flex;
+  flex-wrap: wrap; /* Allows the items to wrap onto the next line */
 }
 
 img {
@@ -157,31 +151,8 @@ img {
   height: auto;
 }
 
-.container {
-  display: flex;
-  flex-wrap: wrap; /* Allows items to wrap onto the next line */
-}
-
 .item {
   flex: 1 1 200px; /* Items will grow and shrink but won't be smaller than 200px */
-}
-
-.image-container {
-  position: relative;
-  width: 100%; 
-  height: auto; 
-}
-
-.image-container img {
-  width: 100%;
-  height: auto;
-  display: block; /* Remove any space below the image */
-}
-
-.image-container::before {
-  content: '';
-  position: absolute;
-  background: linear-gradient(to bottom, rgb(0, 0, 0) 0%, rgba(0, 0, 0, 0) 100%);
 }
 
 .aboutHeader {
@@ -194,49 +165,84 @@ img {
   color: white;
 }
 
+/* Style for the main content container */
+.content-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Keeps content vertically centered */
+  align-items: center;
+  height: 100vh;
+  padding-top: 10px; /* Adds padding at the top */
+  box-sizing: border-box; /* Ensures padding doesn't affect overall height */
+}
 
+/* Style for the chat container */
+.chat-container {
+  padding-top: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 60%;
+  max-width: 600px; /* Maximum width of the chat container */
+  padding: 20px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  background: #fff; /* Background color */
+  border-radius: 10px; /* Rounds corners */
+}
 
+.search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  margin: 0 auto; /* Centers the container */
+}
 
+.search-bar, .search-button {
+  display: block; /* Makes them block elements */
+  width: 50%;
+  margin: 20px auto; /* Centers horizontally */
+}
 
+/* Style for the search bar */
+.search-bar {
+  flex-grow: 1; /* Allows the search bar to fill the space */
+  margin-right: 10px; 
+  width: 80%;
+  padding: 10px;
+  font-size: 16px; 
+  border: 2px solid #ddd; /* Border for the search bar */
+  border-radius: 5px; /* Rounded corners for the search bar */
+  margin-bottom: 10px;
+}
 
+/* Style for the search button */
+.search-button {
+  padding: 10px 20px; /* Padding around the text */
+  font-size: 16px; 
+  border: none; /* No border for the button */
+  border-radius: 5px; /* Rounded corners for the button */
+  background-color: rgb(114, 99, 143); /* Background color of the button */
+  color: white; /* Text color */
+  cursor: pointer; /* Cursor to indicate if it's clickable */
+}
 
+.search-button:hover {
+  background-color: rgb(24, 24, 59); /* Darker shade when hovering */
+}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+/* Style for the chat history */
+.chat-history {
+  margin-top: 5px; /* Space above the chat history */
+  padding: 15px; /* Padding inside the chat history box */
+  border: 1px solid #ddd; /* Border around the chat history */
+  border-radius: 5px; /* Rounded corners for the chat history box */
+  background-color: #f9f9f9; /* Background color of the chat history */
+  width: 80%; 
+  max-width: 600px; 
+  margin-left: auto; /* Center aligns the chat history box left */
+  margin-right: auto; /* Center aligns the chat history box right */
+  text-align: left; /* Aligns the text to the left inside of the chat history box */
+}
 
