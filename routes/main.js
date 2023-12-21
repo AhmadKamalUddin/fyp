@@ -1,15 +1,6 @@
 module.exports = function (app, webData) {
     const webApp = "vitAI";
 
-    // Middleware to redirect to login if user is not logged in
-    const redirectLogin = (req, res, next) => {
-        if (!req.session.userId ) {
-            res.redirect('./login');
-        } else { 
-            next(); 
-        }
-    }
-
     // Importing necessary modules for validation, rate limiting, CORS and HTTP requests
     const { check, validationResult } = require('express-validator');
     const rateLimit = require('express-rate-limit');
@@ -92,6 +83,7 @@ module.exports = function (app, webData) {
                 console.error('Error:', error);
                 return res.status(500).send('Error occurred');
             }
+            console.log("API Response:", body);
             // Renders the template with the response, userQuery, and conversationId
             res.render('index', { 
                 webApp: webApp, // or just the webApp

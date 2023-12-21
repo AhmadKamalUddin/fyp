@@ -20,20 +20,21 @@
         <h2 class="label">Welcome to <%=webApp%></h2>
       </div>
       <div class="content-container">
-      <div class="chat-container">
-        <div class="search-container">
-          <input type="text" name="userQuery" placeholder="Ask me anything..." class="search-bar">
-          <button type="submit" class="search-button">Ask</button>
-      </div>
-        <div class="chat-history">
+        <div class="chat-container">
+          <form action="/sendQuery" method="POST" class="search-form">
+            <div class="search-container">
+              <input type="text" name="userQuery" placeholder="Ask me anything..." class="search-bar">
+              <button type="submit" class="search-button">Ask</button>
+            </div>
+          </form>
+          <div class="chat-history">
             <% if (typeof response !== 'undefined') { %>
-                <p>User: <%= userQuery %></p>
-                <p>vidAI: <%= response %></p>
+              <p>User: <%= userQuery %></p>
+              <p>vidAI: <%= response %></p>
             <% } %>
+          </div>
         </div>
       </div>
-    </div>
-    </ul>
-  </section>
+    </section>
   </body>
 </html>
