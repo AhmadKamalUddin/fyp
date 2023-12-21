@@ -13,7 +13,6 @@ module.exports = function (app, webData) {
     // Importing necessary modules for validation, rate limiting, CORS and HTTP requests
     const { check, validationResult } = require('express-validator');
     const rateLimit = require('express-rate-limit');
-    const cors = require('cors');
     const express = require('express');
     const request = require('request');
     const bodyParser = require('body-parser');
@@ -25,9 +24,6 @@ module.exports = function (app, webData) {
         max: 100 // Limit each IP to 100 requests per windowMs
     });
     app.use(limiter);
-
-    // Enabling Cross-Origin Resource Sharing
-    app.use(cors());
 
     app.get('/', function (req, res) {
         res.render('index', { webApp: webApp, conversationId: '' });
