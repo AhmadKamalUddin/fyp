@@ -234,11 +234,11 @@ img {
 
 /* Style for the chat history */
 .chat-history {
-  margin-top: 5px; /* Space above the chat history */
-  padding: 15px; /* Padding inside the chat history box */
+  margin-top: 5px;
+  padding: 15px; 
   border: 1px solid #ddd; /* Border around the chat history */
   border-radius: 5px; /* Rounded corners for the chat history box */
-  background-color: #f9f9f9; /* Background color of the chat history */
+  background-color: #f9f9f9;
   width: 80%; 
   max-width: 600px; 
   margin-left: auto; /* Center aligns the chat history box left */
