@@ -104,7 +104,11 @@ rl.prompt();
 
 //set bot output based on the training given to the manager
 rl.on('line', async line => {
-  const response = await manager.process('en', line);
-  console.log('Bot:', response.answer);
-  rl.prompt();
-});
+    const response = await manager.process('en', line);
+    if (response.answer) {
+      console.log('Bot:', response.answer);
+    } else {
+      console.log("Bot: I'm pretty new at this. Please rephrase or try again later.");
+    }
+    rl.prompt();
+  });
