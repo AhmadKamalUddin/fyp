@@ -72,8 +72,12 @@ const manager = new NlpManager({ languages: ['en'] });
 
 // Add some training data as this adds responses based on users inputs and this is used for training.
 manager.addDocument('en', 'hello', 'greetings.hello');
-manager.addDocument('en', 'hi', 'greetings.hello');
-manager.addDocument('en', 'hey', 'greetings.hello');
+manager.addDocument('en', 'hi', 'greetings.hi');
+manager.addDocument('en', 'hey', 'greetings.hey');
+manager.addDocument('en', 'yo', 'greetings.yo');
+manager.addDocument('en', 'how are you?', 'greetings.how_are_you');
+manager.addDocument('en', 'what can you do?', 'greetings.what_can_you_do');
+manager.addDocument('en', 'kl', 'greetings.kl');
 
 manager.addDocument('en', 'goodbye', 'greetings.bye');
 manager.addDocument('en', 'bye for now', 'greetings.bye');
@@ -81,7 +85,13 @@ manager.addDocument('en', 'stop', 'greetings.bye');
 
 // Define responses
 manager.addAnswer('en', 'greetings.hello', 'Hello there!');
+manager.addAnswer('en', 'greetings.hi', 'Hi there!');
+manager.addAnswer('en', 'greetings.hey', 'Heyyyy!');
+manager.addAnswer('en', 'greetings.yo', 'Yo!');
 manager.addAnswer('en', 'greetings.bye', 'Till next time!');
+manager.addAnswer('en', 'greetings.how_are_you', 'I am fine, thank you!');
+manager.addAnswer('en', 'greetings.what_can_you_do', 'I am an AI chatbot. I will try and help you with anything. Ask me something!');
+manager.addAnswer('en', 'greetings.kl', 'Yh! I am pretty cool');
 
 // Train the model using the manager and what inputs are given to the manager
 (async () => {
