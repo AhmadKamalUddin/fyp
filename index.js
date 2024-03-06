@@ -1,45 +1,46 @@
 // Import the modules we need
-var express = require ('express')
-var ejs = require('ejs')
-var bodyParser= require ('body-parser')
+var express = require('express');
+var ejs = require('ejs');
+var bodyParser = require('body-parser');
 const mysql = require('mysql');
-var session = require ('express-session');
+var session = require('express-session');
 
 // Create the express application object
-const app = express()
-const port = 8000
+const app = express();
+const port = 8000;
 const expressSanitizer = require('express-sanitizer');
 
-app.use(bodyParser.urlencoded({ extended: true }))
-
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(expressSanitizer());
 
 // Set up css
 app.use(express.static(__dirname + '/public'));
 
 // Create a session
-app.use(session({
+app.use(
+  session({
     secret: 'somerandomstuff',
     resave: false,
     saveUninitialized: false,
     cookie: {
-        expires: 600000
+      expires: 600000
     }
-}));
+  })
+);
 
 // Define the database connection
-const db = mysql.createConnection ({
-    host: 'localhost',
-    user: 'appuser',
-    password: 'qwerty',
-    database: 'ai'
+const db = mysql.createConnection({
+  host: 'localhost',
+  user: 'appuser',
+  password: 'qwerty',
+  database: 'ai'
 });
 // Connect to the database
-db.connect((err) => {
-    if (err) {
-        throw err;
-    }
-    console.log('Connected to database');
+db.connect(err => {
+  if (err) {
+    throw err;
+  }
+  console.log('Connected to database');
 });
 global.db = db;
 
@@ -55,10 +56,55 @@ app.set('view engine', 'ejs');
 app.engine('html', ejs.renderFile);
 
 // Define our data
-var webData = {webApp: "vitAI"}
+var webData = { webApp: 'vitAI' };
 
 // Requires the main.js file inside the routes folder passing in the Express app and data as arguments.  All the routes will go in this file
-require("./routes/main")(app, webData);
+require('./routes/main')(app, webData);
 
 // Start the web app listening
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`Example app listening on port ${port}!`));
+
+// Implement NLP functionality by installing the node-nlp module
+const { NlpManager } = require('node-nlp');
+
+// Create an instance of NlpManager and ensure the language is english
+const manager = new NlpManager({ languages: ['en'] });
+
+// Add some training data as this adds responses based on users inputs and this is used for training.
+manager.addDocument('en', 'hello', 'greetings.hello');
+manager.addDocument('en', 'hi', 'greetings.hello');
+manager.addDocument('en', 'hey', 'greetings.hello');
+
+manager.addDocument('en', 'goodbye', 'greetings.bye');
+manager.addDocument('en', 'bye for now', 'greetings.bye');
+manager.addDocument('en', 'stop', 'greetings.bye');
+
+// Define responses
+manager.addAnswer('en', 'greetings.hello', 'Hello there!');
+manager.addAnswer('en', 'greetings.bye', 'Till next time!');
+
+// Train the model using the manager and what inputs are given to the manager
+(async () => {
+    await manager.train();
+    manager.save();
+})();
+
+// Terminal implementation using readline so I can respond in terminal
+const readline = require('readline');
+
+//readline or rl used as variable to set user input and bot output
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
+
+//set user input
+rl.setPrompt('You: ');
+rl.prompt();
+
+//set bot output based on the training given to the manager
+rl.on('line', async line => {
+  const response = await manager.process('en', line);
+  console.log('Bot:', response.answer);
+  rl.prompt();
+});
