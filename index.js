@@ -87,7 +87,7 @@ manager.addDocument('en', 'stop', 'greetings.bye');
 manager.addAnswer('en', 'greetings.hello', 'Hello there!');
 manager.addAnswer('en', 'greetings.hi', 'Hi there!');
 manager.addAnswer('en', 'greetings.hey', 'Heyyyy!');
-manager.addAnswer('en', 'greetings.yo', 'Yo!');
+manager.addAnswer('en', 'greetings.yo', 'Yo Wagwan!');
 manager.addAnswer('en', 'greetings.bye', 'Till next time!');
 manager.addAnswer('en', 'greetings.how_are_you', 'I am fine, thank you!');
 manager.addAnswer('en', 'greetings.what_can_you_do', 'I am an AI chatbot. I will try and help you with anything. Ask me something!');
