@@ -1,8 +1,7 @@
-<!doctype html>
 <html>
   <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet"  type="text/css" href="/main.css" />
+    <link rel="stylesheet" type="text/css" href="/main.css" />
   </head>
   <body>
     <section class="background">
@@ -23,8 +22,14 @@
       <div class="label-container">
         <h2 class="label">Welcome to <%=webApp%></h2>
       </div>
-    <h1 class="aboutHeader">About <%=webApp%></h1>
-    <p class="aboutP">VitAI derives from vitae which is a latin word meaning course of life. VitAI is here to help with any curriculum to make you stand out.</p>
-  </body>
+      <div class="content-container">
+        <div class="chat-container">
+          <form class="loginForm" method="POST" action="/loggedin">
+            <p>Username: <input id="username" type="username" name="username" value="username" /></p>
+            <p>Password: <input id="password" type="password" name="password" value="password" /></p>
+            <input type="submit" value="Login" />
+        </div>
+    </div>
 </section>
+</body>
 </html>
