@@ -186,8 +186,8 @@ module.exports = function (app, webData) {
             // Renders the template with the response, userQuery, and conversationId
             res.render('index', { 
                 webApp: webApp, // or just the webApp
-                response: body.response, 
-                userQuery: userQuery, 
+                responseuserQuery: body.response, 
+                 userQuery, 
                 conversationId: body.conversationId || req.body.conversationId
             });
         });
