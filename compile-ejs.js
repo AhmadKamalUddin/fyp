@@ -1,11 +1,11 @@
-//For deploying on netlify
+// For deploying on Netlify
 const ejs = require('ejs');
 const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
 
-// Define webApp or fetch it from somewhere
-const webApp = {}; // Define webApp object or fetch it from somewhere
+// Define webData with webApp as 'vitAI'
+const webData = { webApp: 'vitAI' };
 
 // Specify the views directory and the output directory
 const viewsDir = path.join(__dirname, 'views');
@@ -24,7 +24,9 @@ glob(`${viewsDir}/**/*.ejs`, (err, files) => {
   files.forEach(file => {
     const outputPath = file.replace(viewsDir, outputDir).replace('.ejs', '.html');
     const data = fs.readFileSync(file, 'utf-8');
-    const compiled = ejs.render(data, { webApp }); // Pass webApp as a parameter to ejs.render
+    
+    // Pass webData as a parameter to ejs.render
+    const compiled = ejs.render(data, webData);
 
     // Ensure the directory exists
     fs.mkdirSync(path.dirname(outputPath), { recursive: true });
