@@ -4,6 +4,9 @@ const fs = require('fs');
 const path = require('path');
 const glob = require('glob');
 
+// Define webApp or fetch it from somewhere
+const webApp = {}; // Define webApp object or fetch it from somewhere
+
 // Specify the views directory and the output directory
 const viewsDir = path.join(__dirname, 'views');
 const outputDir = path.join(__dirname, 'public');
@@ -21,7 +24,7 @@ glob(`${viewsDir}/**/*.ejs`, (err, files) => {
   files.forEach(file => {
     const outputPath = file.replace(viewsDir, outputDir).replace('.ejs', '.html');
     const data = fs.readFileSync(file, 'utf-8');
-    const compiled = ejs.render(data);
+    const compiled = ejs.render(data, { webApp }); // Pass webApp as a parameter to ejs.render
 
     // Ensure the directory exists
     fs.mkdirSync(path.dirname(outputPath), { recursive: true });
