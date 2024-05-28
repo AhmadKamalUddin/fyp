@@ -1,3 +1,4 @@
+//For deploying on netlify
 const ejs = require('ejs');
 const fs = require('fs');
 const path = require('path');
