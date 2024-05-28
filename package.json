@@ -6,7 +6,8 @@
   "scripts": {
     "start": "node index.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "echo \"No build steps specified\""
+    "compile-ejs": "node compile-ejs.js",
+    "build": "npm run compile-ejs"
   },
   "author": "",
   "license": "ISC",
@@ -26,5 +27,9 @@
     "pug": "^3.0.2",
     "readline": "^1.3.0",
     "request": "^2.88.2"
+  },
+  "devDependencies": {
+    "ejs-cli": "^1.0.0",
+    "glob": "^8.1.0"
   }
 }
