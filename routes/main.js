@@ -165,15 +165,14 @@ module.exports = function (app, webData) {
             method: 'POST',
             url: 'https://chatgpt-gpt4-ai-chatbot.p.rapidapi.com/ask',
             headers: {
-              'content-type': 'application/json',
-              'X-RapidAPI-Key': 'f4b5e795e9msha6da9abb3a10e70p105f08jsnb021b319baea',
-              'X-RapidAPI-Host': 'chatgpt-gpt4-ai-chatbot.p.rapidapi.com'
+                'content-type': 'application/json',
+                'X-RapidAPI-Key': 'f4b5e795e9msha6da9abb3a10e70p105f08jsnb021b319baea',
+                'X-RapidAPI-Host': 'chatgpt-gpt4-ai-chatbot.p.rapidapi.com'
             },
-            body: {
-              query: userQuery,
-              ...(conversationId && { conversationId })
-            },
-            json: true
+            body: JSON.stringify({
+                query: userQuery,
+                ...(conversationId && { conversationId })
+            })
         };
     
     
@@ -182,14 +181,19 @@ module.exports = function (app, webData) {
                 console.error('Error:', error);
                 return res.status(500).send('Error occurred');
             }
-            console.log("API Response:", body);
-            // Renders the template with the response, userQuery, and conversationId
-            res.render('index', { 
-                webApp: webApp, // or just the webApp
-                responseuserQuery: body.response, 
-                 userQuery, 
-                conversationId: body.conversationId || req.body.conversationId
-            });
+            try {
+                const parsedBody = JSON.parse(body);
+                console.log("API Response:", parsedBody);
+                res.render('index', {
+                    webApp: webApp,
+                    response: parsedBody.response,
+                    userQuery: userQuery,
+                    conversationId: parsedBody.conversationId || req.body.conversationId
+                });
+            } catch (err) {
+                console.error('Error parsing API response:', err);
+                res.status(500).send('Error parsing API response');
+            }  
         });
     });
 }

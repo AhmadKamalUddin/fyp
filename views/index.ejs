@@ -1,43 +1,44 @@
+<!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" type="text/css" href="/main.css" />
-  </head>
-  <body>
+</head>
+<body>
     <section class="background">
-      <div class="nav-container">
-        <ul class="nav-list">
-          <li class="dropdown">
-            <a class="dropbar" href="#">|||||</a>
-            <ul class="dropdown-content">
-              <li><a href="/">Home</a></li>
-              <li><a href="about">About <%=webApp%></a></li>
-              <li><a href="login">Login</a></li>
-              <li><a href="register">Register with us</a></li>
-              <li><a href="logout">Logout</a></li>
+        <div class="nav-container">
+            <ul class="nav-list">
+                <li class="dropdown">
+                    <a class="dropbar" href="#">|||||</a>
+                    <ul class="dropdown-content">
+                        <li><a href="/">Home</a></li>
+                        <li><a href="about">About <%=webApp%></a></li>
+                        <li><a href="login">Login</a></li>
+                        <li><a href="register">Register with us</a></li>
+                        <li><a href="logout">Logout</a></li>
+                    </ul>
+                </li>
             </ul>
-          </li>
-        </ul>
-      </div>
-      <div class="label-container">
-        <h2 class="label">Welcome to <%=webApp%></h2>
-      </div>
-      <div class="content-container">
-        <div class="chat-container">
-          <form action="/sendQuery" method="POST" class="search-form">
-            <div class="search-container">
-              <input type="text" name="userQuery" placeholder="Ask me anything..." class="search-bar">
-              <button type="submit" class="search-button">Ask</button>
-            </div>
-          </form>
-          <div class="chat-history">
-            <% if (typeof response !== 'undefined') { %>
-              <p>User: <%= userQuery %></p>
-              <p>vidAI: <%= response %></p>
-            <% } %>
-          </div>
         </div>
-      </div>
+        <div class="label-container">
+            <h2 class="label">Welcome to <%=webApp%></h2>
+        </div>
+        <div class="content-container">
+            <div class="chat-container">
+                <form action="/sendQuery" method="POST" class="search-form">
+                    <div class="search-container">
+                        <input type="text" name="userQuery" placeholder="Ask me anything..." class="search-bar">
+                        <button type="submit" class="search-button">Ask</button>
+                    </div>
+                </form>
+                <div class="chat-history">
+                    <% if (typeof response !== 'undefined') { %>
+                        <p>User: <%= userQuery %></p>
+                        <p>VitAI: <%= response %></p>
+                    <% } %>
+                </div>
+            </div>
+        </div>
     </section>
-  </body>
+</body>
 </html>
